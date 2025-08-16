@@ -285,10 +285,10 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
 
   if (loading && !doctor) {
     return (
-      <div className="flex items-center justify-center min-h-[400px] bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="flex items-center justify-center min-h-[400px] bg-gradient-to-br from-stone-50 to-green-100">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600 font-medium">Loading doctor information...</p>
+          <div className="w-12 h-12 border-4 border-green-800 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-800 font-medium">Loading doctor information...</p>
         </div>
       </div>
     );
@@ -296,16 +296,16 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
 
   if (!doctor) {
     return (
-      <div className="min-h-[400px] bg-gradient-to-br from-red-50 to-orange-100 flex items-center justify-center">
+      <div className="min-h-[400px] bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center">
         <div className="text-center bg-white p-8 rounded-2xl shadow-lg max-w-md">
-          <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+          <AlertCircle className="w-16 h-16 text-amber-600 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-800 mb-2">Unable to Load Doctor</h3>
           <p className="text-gray-600 mb-4">
             {error || 'Doctor information is not available.'}
           </p>
           <button 
             onClick={() => window.history.back()}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors"
+            className="bg-green-800 hover:bg-green-900 text-white px-6 py-2 rounded-lg transition-colors"
           >
             Go Back
           </button>
@@ -315,9 +315,9 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-screen">
+    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-br from-stone-50 via-white to-green-100 min-h-screen">
       {/* Header */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-blue-100">
+      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-green-100">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">Book Appointment</h2>
@@ -325,27 +325,27 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
           </div>
           <div className="flex items-center space-x-2">
             {isOnline ? (
-              <Wifi className="w-5 h-5 text-green-500" />
+              <Wifi className="w-5 h-5 text-green-800" />
             ) : (
-              <WifiOff className="w-5 h-5 text-red-500" />
+              <WifiOff className="w-5 h-5 text-amber-600" />
             )}
-            <span className={`text-sm ${isOnline ? 'text-green-600' : 'text-red-600'}`}>
+            <span className={`text-sm ${isOnline ? 'text-green-800' : 'text-amber-600'}`}>
               {isOnline ? 'Online' : 'Offline'}
             </span>
           </div>
         </div>
         
         {/* Doctor Info */}
-        <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+        <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-stone-50 to-green-50 rounded-xl">
+          <div className="w-16 h-16 bg-gradient-to-br from-green-800 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
             <span className="text-white font-bold text-lg">
               {doctor.name.split(' ')[1]?.charAt(0) || 'D'}
             </span>
           </div>
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-gray-800">{doctor.name}</h3>
-            <p className="text-blue-600 font-medium">{doctor.specialty}</p>
-            <div className="flex items-center space-x-4 text-sm text-gray-500 mt-1">
+            <p className="text-green-800 font-medium">{doctor.specialty}</p>
+            <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
               <span>{doctor.experience} experience</span>
               <span>⭐ {doctor.rating}/5</span>
               {doctor.location && <span>📍 {doctor.location}</span>}
@@ -353,7 +353,7 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
             {doctor.languages && (
               <div className="flex flex-wrap gap-1 mt-2">
                 {doctor.languages.map(lang => (
-                  <span key={lang} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
+                  <span key={lang} className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
                     {lang}
                   </span>
                 ))}
@@ -361,16 +361,16 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
             )}
           </div>
           <div className="text-right">
-            <div className="text-2xl font-bold text-green-600">₹{doctor.consultationFee}</div>
-            <div className="text-sm text-gray-500">consultation fee</div>
+            <div className="text-2xl font-bold text-yellow-600">₹{doctor.consultationFee}</div>
+            <div className="text-sm text-gray-600">consultation fee</div>
           </div>
         </div>
       </div>
 
       {/* Consultation Mode Selector */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-blue-100">
+      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-green-100">
         <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-          <Video className="w-5 h-5 mr-2 text-blue-500" />
+          <Video className="w-5 h-5 mr-2 text-green-800" />
           Consultation Mode
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -378,60 +378,60 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
             <button
               className={`p-4 rounded-xl border-2 transition-all duration-200 ${
                 selectedMode === 'video'
-                  ? 'border-blue-500 bg-blue-50 shadow-md'
-                  : 'border-gray-200 hover:border-blue-300 hover:bg-blue-25'
+                  ? 'border-green-800 bg-green-50 shadow-md'
+                  : 'border-gray-200 hover:border-green-300 hover:bg-green-25'
               }`}
               onClick={() => {
                 setSelectedMode('video');
                 onModeChange && onModeChange('video');
               }}
             >
-              <Video className={`w-6 h-6 mx-auto mb-2 ${selectedMode === 'video' ? 'text-blue-500' : 'text-gray-400'}`} />
+              <Video className={`w-6 h-6 mx-auto mb-2 ${selectedMode === 'video' ? 'text-green-800' : 'text-gray-400'}`} />
               <p className="font-medium text-gray-800">Video Consultation</p>
-              <p className="text-sm text-gray-500">Online consultation via video call</p>
-              <p className="text-lg font-bold text-blue-600 mt-2">₹{doctor.consultationFee}</p>
+              <p className="text-sm text-gray-600">Online consultation via video call</p>
+              <p className="text-lg font-bold text-yellow-600 mt-2">₹{doctor.consultationFee}</p>
             </button>
           )}
           {doctor.availableModes.includes('in_person') && (
             <button
               className={`p-4 rounded-xl border-2 transition-all duration-200 ${
                 selectedMode === 'in_person'
-                  ? 'border-blue-500 bg-blue-50 shadow-md'
-                  : 'border-gray-200 hover:border-blue-300 hover:bg-blue-25'
+                  ? 'border-green-800 bg-green-50 shadow-md'
+                  : 'border-gray-200 hover:border-green-300 hover:bg-green-25'
               }`}
               onClick={() => {
                 setSelectedMode('in_person');
                 onModeChange && onModeChange('in_person');
               }}
             >
-              <User className={`w-6 h-6 mx-auto mb-2 ${selectedMode === 'in_person' ? 'text-blue-500' : 'text-gray-400'}`} />
+              <User className={`w-6 h-6 mx-auto mb-2 ${selectedMode === 'in_person' ? 'text-green-800' : 'text-gray-400'}`} />
               <p className="font-medium text-gray-800">In-Person Visit</p>
-              <p className="text-sm text-gray-500">Visit doctor's clinic</p>
-              <p className="text-lg font-bold text-blue-600 mt-2">₹{doctor.consultationFee}</p>
+              <p className="text-sm text-gray-600">Visit doctor's clinic</p>
+              <p className="text-lg font-bold text-yellow-600 mt-2">₹{doctor.consultationFee}</p>
             </button>
           )}
         </div>
       </div>
 
       {/* Date Picker */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-blue-100">
+      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-green-100">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-gray-800 flex items-center">
-            <Calendar className="w-5 h-5 mr-2 text-blue-500" />
+            <Calendar className="w-5 h-5 mr-2 text-green-800" />
             Select Date
           </h3>
           <div className="flex space-x-2">
             <button
               onClick={() => navigateDate('prev')}
               disabled={selectedDate.toDateString() === availableDates[0].toDateString()}
-              className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 rounded-lg border border-gray-300 hover:bg-stone-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={() => navigateDate('next')}
               disabled={selectedDate.toDateString() === availableDates[availableDates.length - 1].toDateString()}
-              className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 rounded-lg border border-gray-300 hover:bg-stone-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -449,9 +449,9 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
                 key={date.toISOString()}
                 className={`p-3 rounded-xl text-center transition-all duration-200 ${
                   isSelected
-                    ? 'bg-blue-500 text-white shadow-lg'
+                    ? 'bg-green-800 text-white shadow-lg'
                     : hasAvailableSlots
-                    ? 'bg-blue-50 hover:bg-blue-100 text-gray-800 border border-blue-200'
+                    ? 'bg-green-50 hover:bg-green-100 text-gray-800 border border-green-200'
                     : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
                 }`}
                 onClick={() => hasAvailableSlots && setSelectedDate(date)}
@@ -469,31 +469,31 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
       </div>
 
       {/* Time Slots */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
+      <div className="bg-white rounded-2xl shadow-lg p-6 border border-green-100">
         <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-          <Clock className="w-5 h-5 mr-2 text-blue-500" />
+          <Clock className="w-5 h-5 mr-2 text-green-800" />
           Available Slots for {formatDate(selectedDate)}
         </h3>
 
         {loading && (
           <div className="flex items-center justify-center py-8">
             <div className="text-center">
-              <div className="w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-              <p className="text-gray-600">Loading slots...</p>
+              <div className="w-8 h-8 border-3 border-green-800 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+              <p className="text-gray-800">Loading slots...</p>
             </div>
           </div>
         )}
 
         {error && !loading && (
-          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-4">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
             <div className="flex items-center">
-              <AlertCircle className="w-5 h-5 text-yellow-600 mr-2" />
+              <AlertCircle className="w-5 h-5 text-amber-600 mr-2" />
               <div>
-                <p className="text-yellow-800 font-medium">Connection Issue</p>
-                <p className="text-yellow-700 text-sm">{error}</p>
+                <p className="text-amber-800 font-medium">Connection Issue</p>
+                <p className="text-amber-700 text-sm">{error}</p>
                 <button 
                   onClick={() => fetchSlotsForDate(selectedDate)}
-                  className="mt-2 text-yellow-600 hover:text-yellow-800 text-sm font-medium flex items-center"
+                  className="mt-2 text-amber-600 hover:text-amber-800 text-sm font-medium flex items-center"
                 >
                   <RefreshCw className="w-4 h-4 mr-1" />
                   Retry
@@ -508,7 +508,7 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
             {getDateSlots(selectedDate).length === 0 ? (
               <div className="text-center py-8">
                 <Calendar className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500 text-lg mb-2">No slots available</p>
+                <p className="text-gray-600 text-lg mb-2">No slots available</p>
                 <p className="text-gray-400 text-sm">Please select another date</p>
               </div>
             ) : (
@@ -524,7 +524,7 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
                         available && !isLocked
                           ? 'bg-green-50 hover:bg-green-100 text-green-800 border border-green-200 hover:shadow-md'
                           : isLocked
-                          ? 'bg-orange-50 text-orange-800 border border-orange-200'
+                          ? 'bg-amber-50 text-amber-800 border border-amber-200'
                           : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
                       }`}
                       onClick={() => available && !isLocked && handleSlotSelect(slot)}
@@ -548,7 +548,7 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
         <div className="mt-6 pt-4 border-t border-gray-200">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
             <div className="flex items-center">
-              <Clock className="w-4 h-4 mr-2 text-blue-500" />
+              <Clock className="w-4 h-4 mr-2 text-green-800" />
               <span><strong>Duration:</strong> 30 minutes</span>
             </div>
             <div className="flex items-center">
@@ -556,7 +556,7 @@ const SlotPicker = ({ doctor: doctorProp, onSlotSelect, selectedMode: initialMod
               <span><strong>Fee:</strong> ₹{doctor.consultationFee}</span>
             </div>
             <div className="flex items-center">
-              <AlertCircle className="w-4 h-4 mr-2 text-orange-500" />
+              <AlertCircle className="w-4 h-4 mr-2 text-amber-600" />
               <span><strong>Note:</strong> Slots locked for 5 min</span>
             </div>
           </div>
