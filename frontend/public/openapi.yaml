@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Amrutam API Contract
+  version: 1.0.0
+paths:
+  /api/doctors:
+    get:
+      summary: Get list of doctors
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id: { type: string }
+                    name: { type: string }
+                    specialization: { type: string }
+                    experience: { type: string }
+                    rating: { type: number }
+                    reviews: { type: integer }
+                    mode: { type: array, items: { type: string } }
+                    languages: { type: array, items: { type: string } }
+                    consultationFee: { type: integer }
+                    availableModes: { type: array, items: { type: string, enum: ['video', 'in_person'] } }
+        '500':
+          description: Server error
+  /api/doctors/{doctorId}/slots:
+    get:
+      summary: Get available slots for a doctor on a specific date
+      parameters:
+        - name: doctorId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id: { type: string }
+                    startTime: { type: string, format: time }
+                    endTime: { type: string, format: time }
+                    status: { type: string, enum: ['available', 'booked', 'locked'] }
+                    availableModes: { type: array, items: { type: string, enum: ['video', 'in_person'] } }
+        '404':
+          description: No slots available
+        '500':
+          description: Server error
+  /api/appointments/slots/{doctorId}:
+    get:
+      summary: Get next available slot for a doctor
+      parameters:
+        - name: doctorId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  startTime: { type: string }
+        '404':
+          description: No slots available
+        '500':
+          description: Server error
