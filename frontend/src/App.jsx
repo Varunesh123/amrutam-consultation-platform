@@ -22,6 +22,7 @@ import BookAppointment from './pages/BookAppointment';
 import AppointmentDashboard from './components/dashboard/AppointmentDashboard';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
+import AboutPage from './pages/AboutPage';
 
 // Hooks
 import { useAuth } from './hooks/useAuth';
@@ -123,6 +124,7 @@ function App() {
                     {/* Catch all route */}
                     <Route path="*" element={<NotFound />} />
                     <Route path="/slot-picker" element={<SlotPicker />} />
+                    <Route path="/about" element={<AboutPage />} />
                   </Routes>
                 </main>
               </div>
