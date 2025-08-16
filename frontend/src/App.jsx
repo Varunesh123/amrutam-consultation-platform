@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { AppProvider } from './context/AppContext';
-import AppointmentCard from './components/appointments/AppointmentCard';
 import AppointmentDetails from './components/appointments/AppointmentDetails';
 import AppointmentList from './components/appointments/AppointmentList';
 import AppointmentFilters from './components/appointments/AppointmentFilters';
@@ -124,7 +123,6 @@ function App() {
                     {/* Catch all route */}
                     <Route path="*" element={<NotFound />} />
                     <Route path="/slot-picker" element={<SlotPicker />} />
-                    <Route path="/appointment-dashboard" element={<AppointmentDashboard />} />
                   </Routes>
                 </main>
               </div>

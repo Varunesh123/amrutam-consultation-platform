@@ -13,7 +13,6 @@ const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSpecialization, setSelectedSpecialization] = useState('');
   const [selectedMode, setSelectedMode] = useState('');
-  const [showFilters, setShowFilters] = useState(false);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -142,6 +141,12 @@ const HomePage = () => {
               </div>
               <nav className="hidden md:flex space-x-8">
                 <button 
+                  onClick={() => navigate('/about')} 
+                  className="text-gray-700 hover:text-emerald-600 transition-colors"
+                >
+                  About Amrutam
+                </button>
+                <button 
                   onClick={() => navigate('/slot-picker')} 
                   className="text-gray-700 hover:text-emerald-600 transition-colors"
                 >
@@ -158,12 +163,6 @@ const HomePage = () => {
                   className="text-gray-700 hover:text-emerald-600 transition-colors"
                 >
                   Find Doctors
-                </button>
-                <button 
-                  onClick={() => navigate('/about')} 
-                  className="text-gray-700 hover:text-emerald-600 transition-colors"
-                >
-                  About Amrutam
                 </button>
                 {isAuthenticated && (
                   <button 
